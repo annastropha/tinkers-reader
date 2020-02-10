@@ -7,4 +7,5 @@ Features
 - [ ] Vanilla+TC+Non-Tail Mods dataset
 - [ ] Buttons to load sample datasets
 - [ ] Button to save and load custom dataset
+- [ ] Automatic Saving+Persistence of current dataset via cookies (is there a better option? Look into it)
 
