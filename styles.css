@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Code&display=swap');
+
+body {
+    background-color: #e6d7bb;
+}
+
+.mat-list-item {
+    padding: 0.2rem;
+    width: 7.4rem;
+    height: 7.4rem;
+    text-align: center;
+    font-family: 'Fira Code', monospace;
+    text-decoration: none;
+    color: initial;
+}
+
+.material-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.item-image {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    width: 64px;
+}
