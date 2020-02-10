@@ -12,7 +12,7 @@ module.exports = {
             return m(m.route.Link, 
                 {
                     class: "mat-list-item",
-                    href: "/edit/" + index
+                    href: "/view/" + index
                 },
                 [
                     m("img.item-image", {src: "data:image/png;base64," + mat.image}),

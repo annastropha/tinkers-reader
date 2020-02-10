@@ -2,6 +2,7 @@
 
 body {
     background-color: #e6d7bb;
+    font-family: 'Fira Code', monospace;
 }
 
 .mat-list-item {
@@ -9,7 +10,6 @@ body {
     width: 7.4rem;
     height: 7.4rem;
     text-align: center;
-    font-family: 'Fira Code', monospace;
     text-decoration: none;
     color: initial;
 }
@@ -25,4 +25,46 @@ body {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     width: 64px;
+}
+
+
+.materialview, .materialedit{
+    display: flex;
+    flex-wrap: wrap;
+}
+.section.name {
+    flex-basis: 100%;
+    padding: 0 2rem;
+}
+.majorsection {
+    padding: 0 2rem;
+}
+.materialview h3 {
+    margin-bottom: 0.3rem;
+}
+.materialview .value {
+    color: #d0d;
+}
+.materialview .edit-container, .materialedit .material-save {
+    flex-basis: 100%;
+    margin-top: 1em;
+}
+
+.materialedit .row-wrapper::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.materialedit .row-wrapper .label {
+    float: left;
+}
+.materialedit .row-wrapper .input {
+    float: right;
+}
+.materialedit .section.name .input {
+    float: left;
+}
+
+.materialedit .input {
+    margin-left: 1em;
 }
