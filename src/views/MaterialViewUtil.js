@@ -2,7 +2,7 @@ var m = require("mithril")
 var Materials = require("../models/Materials")
 
 module.exports = {
-    render: function(numberRow, name) {
+    render: function(numberRow, name, traits) {
         return [
             name(),
             m(".majorsection.tool", [
@@ -12,16 +12,19 @@ module.exports = {
                     numberRow("Durability", "headdur"),
                     numberRow("Mining Level", "headlevel"),
                     numberRow("Mining Speed", "headspeed"),
-                    numberRow("Attack", "headattack")
+                    numberRow("Attack", "headattack"),
+                    traits("traitsHead")
                 ]),
                 m(".section.handle", [
                     m("h3", "Handle"),
                     numberRow("Modifier", "handlemod"),
-                    numberRow("Durability", "handledur")
+                    numberRow("Durability", "handledur"),
+                    traits("traitsHandle")
                 ]),
                 m(".section.extra", [
                     m("h3", "Extra"),
-                    numberRow("Durability", "extradur")
+                    numberRow("Durability", "extradur"),
+                    traits("traitsExtra")
                 ]),
             ]),
             m(".majorsection.archery", [
@@ -30,21 +33,25 @@ module.exports = {
                     m("h3", "Bow"),
                     numberRow("Draw Speed", "bowspeed"),
                     numberRow("Range Multiplier", "bowrange"),
-                    numberRow("Bonus Damage", "bowdamage")
+                    numberRow("Bonus Damage", "bowdamage"),
+                    traits("traitsBow")
                 ]),
                 m(".section.bowstring", [
                     m("h3", "Bowstring"),
-                    numberRow("Modifier", "stringmod")
+                    numberRow("Modifier", "stringmod"),
+                    traits("traitsBowstring")
                 ]),
                 m(".section.shaft", [
                     m("h3", "Arrow Shaft"),
                     numberRow("Modifier", "shaftmod"),
-                    numberRow("Durability", "shaftbonus")
+                    numberRow("Durability", "shaftbonus"),
+                    traits("traitsShaft")
                 ]),
                 m(".section.fletching", [
                     m("h3", "Fletching"),
                     numberRow("Modifier", "fletchmod"),
-                    numberRow("Accuracy", "fletchacc")
+                    numberRow("Accuracy", "fletchacc"),
+                    traits("traitsFletching")
                 ]),
             ]),
             m(".majorsection.armor", [
@@ -52,17 +59,20 @@ module.exports = {
                 m(".section.core", [
                     m("h3", "Armor Core"),
                     numberRow("Durability", "coredur"),
-                    numberRow("Defense", "coredef")
+                    numberRow("Defense", "coredef"),
+                    traits("traitsCore")
                 ]),
                 m(".section.plates", [
                     m("h3", "Armor Plates"),
                     numberRow("Modifier", "platemod"),
                     numberRow("Durability", "platedur"),
-                    numberRow("Toughness", "platetough")
+                    numberRow("Toughness", "platetough"),
+                    traits("traitsPlates")
                 ]),
                 m(".section.trim", [
                     m("h3", "Armor Trim"),
-                    numberRow("Durability", "trimdur")
+                    numberRow("Durability", "trimdur"),
+                    traits("traitsTrim")
                 ]),
             ])
         ];

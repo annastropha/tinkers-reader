@@ -1,5 +1,6 @@
 var m = require("mithril")
 var Materials = require("../models/Materials")
+var Traits = require("../models/Traits")
 var MaterialViewUtil = require("./MaterialViewUtil")
 
 module.exports = {
@@ -33,6 +34,14 @@ module.exports = {
                         })
                     ])
                 ]);
+            },
+            function(traitfield) {
+                return m(".traits", Materials.current[traitfield].map(function(t) {
+                    return m(".trait", [
+                        m(".trait-name", Traits.get(t).display),
+                        Traits.formattedDescription(t)
+                    ]);
+                }));
             }).concat([
                 m(".material-save", [
                     m("button.material-save.button[type=submit]", "Save")

@@ -14,6 +14,18 @@ body {
     color: initial;
 }
 
+.mat-list-item .wrapper {
+    position: relative;
+}
+
+.mat-list-item .wrapper .sorted-data{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #e6d7bbbb;
+    font-size: small;
+}
+
 .material-list {
     display: flex;
     flex-wrap: wrap;
@@ -67,4 +79,32 @@ body {
 
 .materialedit .input {
     margin-left: 1em;
+}
+
+.traits {
+    margin-top: 0.5rem;
+}
+.trait {
+    position: relative;
+}
+.trait-name {
+    background-color: #4402;
+    display: inline-block;
+}
+
+.trait-desc {
+    display: none;
+    width: calc(100% + 4rem);
+    position: absolute;
+    top: 0;
+    left: -2rem;
+    background-color: #7F9FFF;
+    padding: 0.2rem 0.3rem;
+    border-radius: 1rem;
+    font-size: .8rem;
+    z-index: 1;
+}
+
+.trait:hover .trait-desc {
+    display: block;
 }

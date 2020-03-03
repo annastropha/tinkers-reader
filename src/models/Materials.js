@@ -1,12 +1,30 @@
 // src/models/User.js
 var m = require("mithril")
-var mats = require("../data/Mats")
+var mats = require("../data/VanillaMats")
+
+const STORAGE_KEY = "TinkerReaderMaterialList";
 
 var Materials = {
     list: [],
     loadDefaultList: function() {
-        //clone the array - maintain the dataset through edits
-        Materials.list = JSON.parse(JSON.stringify(mats.materials))
+        let lsList = localStorage.getItem(STORAGE_KEY);
+        if(lsList) {
+            Materials.list = JSON.parse(lsList);
+        } else {
+            //clone the array - maintain the dataset through edits
+            Materials.list = JSON.parse(JSON.stringify(mats.materials));
+            for (let i = 0; i < Materials.list.length; i++) {
+                Materials.list[i].id = i;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(Materials.list));
+        }
+    },
+    loadFromJson: function(inputjson) {
+        Materials.list = inputjson.materials;
+        for (let i = 0; i < Materials.list.length; i++) {
+            Materials.list[i].id = i;
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(Materials.list));
     },
     current: {},
     currentId: 0,
@@ -20,7 +38,9 @@ var Materials = {
     },
     save: function() {
         //Store the current item into the list
+        Materials.current.id = Materials.currentId;
         Materials.list[Materials.currentId] = Materials.current;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(Materials.list));
     }
 }
 

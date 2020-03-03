@@ -1,5 +1,6 @@
 var m = require("mithril")
 var Materials = require("../models/Materials")
+var Traits = require("../models/Traits")
 var MaterialViewUtil = require("./MaterialViewUtil")
 
 module.exports = {
@@ -13,13 +14,23 @@ module.exports = {
                     m("label.label", name + ": "),
                     m("span.value", !isNaN(parseFloat(Materials.current[field])) && isFinite(Materials.current[field]) ? Number(Materials.current[field]) : "-")
                 ])
-            },function(name, field) {
+            },
+            function(name, field) {
                 return m(".section.name", [
                     m(".row-wrapper", [
                         m("h1.materialname", Materials.current.name)
                     ])
                 ]);
-            }).concat([
+            },
+            function(traitfield) {
+                return m(".traits", Materials.current[traitfield].map(function(t) {
+                    return m(".trait", [
+                        m(".trait-name", Traits.get(t).display),
+                        Traits.formattedDescription(t)
+                    ]);
+                }));
+            }
+            ).concat([
                 m(".edit-container", [
                     m(m.route.Link, 
                     {

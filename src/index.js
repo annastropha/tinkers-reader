@@ -1,12 +1,19 @@
 var m = require("mithril")
 
-var MaterialList = require("./views/MaterialList")
-var MaterialForm = require("./views/MaterialForm")
-var MaterialView = require("./views/MaterialView")
+var Layout = require("./views/Layout");
+var MaterialList = require("./views/MaterialList");
+var MaterialForm = require("./views/MaterialForm");
+var MaterialView = require("./views/MaterialView");
 
 
 m.route(document.body, "/list", {
-    "/list": MaterialList,
-    "/edit/:id": MaterialForm,
-    "/view/:id": MaterialView
+    "/list": {render: function() {
+        return m(Layout, m(MaterialList))
+    }},
+    "/edit/:id": {render: function(vnode) {
+        return m(Layout, m(MaterialForm, vnode.attrs))
+    }},
+    "/view/:id": {render: function(vnode) {
+        return m(Layout, m(MaterialView, vnode.attrs))
+    }}
 })
