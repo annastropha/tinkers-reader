@@ -23,7 +23,7 @@ module.exports = {
                 ]);
             },
             function(traitfield) {
-                return m(".traits", Materials.current[traitfield].map(function(t) {
+                return m(".traits", Materials.current[traitfield].filter(t => t.length!=0).map(function(t) {
                     return m(".trait", [
                         m(".trait-name", Traits.get(t).display),
                         Traits.formattedDescription(t)
@@ -32,7 +32,7 @@ module.exports = {
             }
             ).concat([
                 m(".edit-container", [
-                    m(m.route.Link, 
+                    m(m.route.Link,
                     {
                         class: "edit-link",
                         href: "/edit/" + Materials.currentId
