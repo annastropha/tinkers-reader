@@ -81,6 +81,15 @@ body {
     margin-left: 1em;
 }
 
+.materialedit .material-save .button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #66666666;
+    border: 2px white solid;
+    border-radius: 0.2em;
+    margin:0.5em;
+}
+
 .traits {
     margin-top: 0.5rem;
 }

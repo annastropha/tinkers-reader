@@ -12,6 +12,7 @@ module.exports = {
         return m("form.materialedit", 
             {
                 onsubmit: function(e) {
+                    debugger;
                     e.preventDefault();
                     Materials.save();
                 }
@@ -36,7 +37,7 @@ module.exports = {
                 ]);
             },
             function(traitfield) {
-                return m(".traits", Materials.current[traitfield].map(function(t) {
+                return m(".traits", Materials.current[traitfield].filter(t => t.length!=0).map(function(t) {
                     return m(".trait", [
                         m(".trait-name", Traits.get(t).display),
                         Traits.formattedDescription(t)
@@ -44,8 +45,20 @@ module.exports = {
                 }));
             }).concat([
                 m(".material-save", [
-                    m("button.material-save.button[type=submit]", "Save")
-                ])
+                    m("a.material-save.button[href=]", { onclick: function(e) {
+                        e.preventDefault();
+                        Materials.save();
+                    }},"Save and Continue Editing"),
+                    m(m.route.Link, {
+                        class: "material-save button",
+                        href: "/list/",
+                        onclick: function(e) {
+                            e.preventDefault();
+                            Materials.save();
+                        }
+                    }, "Save and Return to List")
+                ]),
+                
             ])
         );
         

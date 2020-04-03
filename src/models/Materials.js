@@ -28,6 +28,18 @@ var Materials = {
     },
     current: {},
     currentId: 0,
+    getUsableNumbers(id){ 
+        if(Materials.list.length == 0) {
+            Materials.loadDefaultList();
+        }
+        var data = JSON.parse(JSON.stringify(Materials.list[id]));
+        for(var v in data) {
+            if(!isNaN(data[v])) {
+                data[v] = Number.parseFloat(data[v]);
+            }
+        }
+        return data;
+    },
     load: function(id) {
         if(Materials.list.length == 0) {
             Materials.loadDefaultList();
